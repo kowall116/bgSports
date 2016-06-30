@@ -1,5 +1,4 @@
 import { ListView } from 'react-native'
-import { json } from '../data/fakeSectionData'
 
 import {
 	SECTION_REQUEST,
@@ -12,10 +11,9 @@ const initialSectionState = {
     rowHasChanged: (row1, row2) => row1 !== row2,
   }),
   isFetching: false,
-  hasFetched: false
+  hasFetched: false,
+  sectionData: {}
 }
-
-console.log(json)
 
 export default function section(state = initialSectionState, action) {
 	switch(action.type) {
@@ -26,13 +24,13 @@ export default function section(state = initialSectionState, action) {
 		case SECTION_SUCCESS:
 			return Object.assign({}, state, { 
 				isFetching: false, 
-				hasFetched: true 
+				hasFetched: true,
+				dataSource: state.dataSource.cloneWithRows(action.payload.content),
+				sectionData: action.payload
 			})
 		case SECTION_FAILURE:
 			return Object.assign({}, state, { 
-				isFetching: false, 
-				hasFetched: true, 
-				dataSource: state.dataSource.cloneWithRows(json['content'])
+				isFetching: false
 			})
 		default:
 			return state

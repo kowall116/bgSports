@@ -7,7 +7,7 @@ export const SECTION_FAILURE = 'SECTION_FAILURE'
 export function fetchSectionData(team) {
 	return {
 		[CALL_API]: {
-			endpoint: 'http://www.bostonglobe.com/sports/celtics/section.json',
+			endpoint: 'https://www.bostonglobe.com/sports/celtics/section.json',
 			method: 'GET',
 			types: [SECTION_REQUEST, SECTION_SUCCESS, SECTION_FAILURE]
 		}

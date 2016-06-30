@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
-  ListView
+  ListView,
+  Image
 } from 'react-native'
 
 import { listViewStyles } from '../styles/listView'
@@ -41,10 +42,30 @@ export default class BGTeamPage extends Component {
 	}
 
 	renderTease(tease) {
-		const label = tease.type && tease.type === 'ad' ? 'AD': tease.headlines.headline
+		// console.log(tease)
+
+		if(tease.type === 'ad') {
+			return (
+				<View style={teaseStyles.container}>
+					<Text style={teaseStyles.title}>AD</Text>
+				</View>
+			)
+		}
+
 		return(
 			<View style={teaseStyles.container}>
-				<Text style={teaseStyles.title}>{label}</Text>
+			{(tease.lead.thumbnail 
+				? (
+					<Image
+						style={teaseStyles.thumbnail}
+						source={{uri: 'https:' + tease.lead.thumbnail}}
+						onLoad={() => {console.log('LOADED')}}
+					/>
+				) : null
+			)}
+				<View style={teaseStyles.rightContainer}>
+					<Text style={teaseStyles.title}>{tease.headlines.headline}</Text>
+				</View>
 			</View>
 		)
 	}

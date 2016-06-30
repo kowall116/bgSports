@@ -1,14 +1,7 @@
 function callSection(endpoint) {
-	return fetch(endpoint, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  })
+	return fetch(endpoint)
 		.then(response => {
-      console.log('TEST')
-			response.json().then(json => ({ json, response }))
+			return response.json().then(json => ({ json, response }))
     })
     .then(({ json, response }) => {
 	      if (!response.ok) {
@@ -41,8 +34,8 @@ export default store => next => action => {
   next(actionWith({ type: requestType }))
 
 	return callSection(endpoint).then(
-    articles => next(actionWith({
-      articles,
+    payload => next(actionWith({
+      payload,
       type: successType
     })),
     error => {
