@@ -1,5 +1,9 @@
 import section from './section'
+import article from './article'
+import team from './team'
 
 export {
-  section
+	team,
+  section,
+  article
 }

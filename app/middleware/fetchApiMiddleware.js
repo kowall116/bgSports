@@ -1,4 +1,4 @@
-function callSection(endpoint) {
+function callEndpoint(endpoint) {
 	return fetch(endpoint)
 		.then(response => {
 			return response.json().then(json => ({ json, response }))
@@ -33,7 +33,7 @@ export default store => next => action => {
 
   next(actionWith({ type: requestType }))
 
-	return callSection(endpoint).then(
+	return callEndpoint(endpoint).then(
     payload => next(actionWith({
       payload,
       type: successType

@@ -2,18 +2,23 @@ import { StyleSheet } from 'react-native'
 
 export const teaseStyles = StyleSheet.create({
 	container: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingVertical: 20,
     paddingHorizontal: 10,
     borderWidth: 0.5,
-    borderColor: '#CCCCCC'
+    borderColor: '#CCCCCC',
+    position: 'relative'
   },
   title: {
     fontSize: 20,
     textAlign: 'left',
+  },
+  overline: {
+  	fontSize: 20,
+  	textAlign: 'left',
+  	color: '#979797'
   },
   rightContainer: {
     flex: 1
@@ -21,6 +26,7 @@ export const teaseStyles = StyleSheet.create({
   thumbnail: {
     width: 130,
     height: 73,
-    marginRight: 10
+    marginRight: 10,
+
   }
 });
